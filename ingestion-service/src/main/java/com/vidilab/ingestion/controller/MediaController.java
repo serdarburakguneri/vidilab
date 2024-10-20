@@ -31,9 +31,8 @@ public class MediaController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(MediaControllerConstants.FILE_IS_EMPTY);
         }
 
-        var future = fileStorageService.storeFileAsync(filePath, file);
-
-        future.thenAccept(result -> logger.debug("File successfully stored: {}", file.getOriginalFilename()))
+        fileStorageService.storeFileAsync(filePath, file)
+                .thenAccept(result -> logger.debug("File successfully stored: {}", file.getOriginalFilename()))
                 .exceptionally(ex -> {
                     logger.error("Failed to store file: {}", file.getOriginalFilename(), ex);
                     return null;

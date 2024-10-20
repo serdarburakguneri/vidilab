@@ -23,9 +23,11 @@
 hs_err_pid*
 replay_pid*
 
-# IntelliJ
-.idea/
-*.iws
-*.iml
-*.ipr
-.DS_Store
+# Maven target directory (root-level and sub-projects)
+target/
+
+# Ignore target directory in ingestion-service sub-directory
+*/target/
+
+# IntelliJ files
+*/.idea/
